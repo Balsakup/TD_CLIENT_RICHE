@@ -14,9 +14,9 @@
                 <header class="page-header">
                     <h1>Services {{ ctrl.lol }}</h1>
 
-                    <div class="alert alert-info">
+                    <div class="alert alert-info" ng-class="{ 'alert-danger': ctrl.count == 0 }">
                         <p>Choisissez les éléments à inclure</p>
-                        <p><b>{{ ctrl.count }} service(s) sélectionné(s)</b></p>
+                        <p><b>{{ ctrl.count }} <ng-pluralize count="ctrl.count" when="{ 'one': 'service sélectionné', 'other': 'services sélectionnés' }"></ng-pluralize></b></p>
                     </div>
 
                     <div class="btns">
