@@ -38,7 +38,7 @@
                     </div>
 
                     <div>
-                        <div class="input-group">
+                        <div class="input-group" ng-class="{ 'has-error': ctrl.promoError }">
                             <span class="input-group-addon">
                                 <input type="checkbox" ng-model="ctrl.useCode" ng-change="ctrl.onChangeCode()">
                             </span>

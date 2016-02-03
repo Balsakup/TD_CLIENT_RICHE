@@ -8,6 +8,7 @@ app.controller('ServicesController', [ '$http', function($http) {
     this.total         = 0;
     this.discount      = 0;
     this.totalDiscount = 0;
+    this.promoError    = false;
 
     var self           = this;
 
@@ -41,11 +42,18 @@ app.controller('ServicesController', [ '$http', function($http) {
         {
             self.discount      = self.total * self.promo[self.code];
             self.totalDiscount = self.total - self.discount;
+            self.promoError    = false;
+        }
+        else
+        if (!(self.code in self.promo) && self.useCode)
+        {
+            self.promoError    = true;
         }
         else
         {
             self.discount      = 0;
             self.totalDiscount = self.total;
+            self.promoError    = false;
         }
 
     };

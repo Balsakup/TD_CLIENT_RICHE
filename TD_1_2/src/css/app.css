@@ -15,3 +15,7 @@ body {
     display: block;
     clear: both;
 }
+
+.btn:focus {
+    outline: none!important;
+}
