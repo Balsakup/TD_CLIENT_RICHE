@@ -1,0 +1,17 @@
+body {
+    background-color: #607d8b;
+}
+
+.page-header {
+    color: #ffffff;
+}
+
+.page-header h1 {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
