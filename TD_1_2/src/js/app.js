@@ -28,7 +28,7 @@ app.controller('ServicesController', [ '$http', function($http) {
 
          });
 
-    this.addService = function(service) {
+    this.toggleService = function(service) {
 
         service.active = !service.active;
 

@@ -21,7 +21,7 @@
 
                     <div class="btns">
 
-                        <button class="btn btn-default btn-lg btn-block clear" ng-repeat="service in ctrl.services" ng-class="{ 'btn-success': service.active }" ng-click="ctrl.addService(service); ctrl.onChangeCode()">
+                        <button class="btn btn-default btn-lg btn-block clear" ng-repeat="service in ctrl.services" ng-class="{ 'btn-success': service.active }" ng-click="ctrl.toggleService(service); ctrl.onChangeCode()">
                             <p class="pull-left">{{ service.name }}</p>
                             <p class="pull-right">
                                 <span class="badge">{{ service.price | currency }}</span>
