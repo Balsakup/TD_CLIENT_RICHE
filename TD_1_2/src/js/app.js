@@ -9,7 +9,7 @@ app.controller('ServicesController', [ '$http', function($http) {
     this.discount      = 0;
     this.totalDiscount = 0;
 
-    var self      = this;
+    var self           = this;
 
     $http.get('services.json')
          .then(function(response) {
