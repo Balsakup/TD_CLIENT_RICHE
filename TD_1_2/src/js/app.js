@@ -1,14 +1,19 @@
+/** On déclare notre application AngularJS **/
 var app = angular.module('App', []);
 
+/*
+* On déclare notre controller
+* Ce controlleur utilise le service http ($http)
+*/
 app.controller('ServicesController', [ '$http', function($http) {
 
-    this.services      = {};
-    this.promo         = {};
-    this.count         = 0;
-    this.total         = 0;
-    this.discount      = 0;
-    this.totalDiscount = 0;
-    this.promoError    = false;
+    this.services      = {};    // On initialise les services à vide
+    this.promo         = {};    // On initialise les promo à vide
+    this.count         = 0;     // On initialise la compteur de service à 0
+    this.total         = 0;     // On initialise le total du prix à 0
+    this.discount      = 0;     // On initialise le total de la réduction à 0
+    this.totalDiscount = 0;     // On initialise le total du prix avec réduction à 0
+    this.promoError    = false; // On dit qu'il n'y a pas d'erreur pour le code promo
 
     var self           = this;
 
