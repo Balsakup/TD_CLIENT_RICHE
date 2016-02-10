@@ -7,6 +7,7 @@ app.controller('ListesController', [ '$http', function($http) {
     self.includedItems         = [];
     self.selectedDispoItems    = [];
     self.selectedIncludedItems = [];
+    self.step                  = 1;
 
     $http.get('items.json')
         .then(function(response) {
@@ -40,10 +41,6 @@ app.controller('ListesController', [ '$http', function($http) {
 
     this.removeFromIncluded = function() {
 
-        if (self.includedItems == null)
-            return;
-
-
         self.selectedIncludedItems.forEach(function(item) {
 
             self.dispoItems.push(item);
@@ -54,9 +51,6 @@ app.controller('ListesController', [ '$http', function($http) {
     };
 
     this.removeAllFromIncluded = function() {
-
-        if (self.includedItems == null)
-            return;
 
         self.includedItems.forEach(function(item) {
 
