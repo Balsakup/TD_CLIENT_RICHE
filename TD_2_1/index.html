@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="App">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Choix Multiple</title>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body ng-controller="ListesController as ctrl">
+        <div class="container">
+
+            <div class="panel panel-primary" style="margin-top: 50px;">
+                <header class="panel-heading">Sélectionnez vos choix</header>
+                <section class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div class="form-group">
+                                <label for="prod_dispo" class="form-label">Produites disponibles:</label>
+                                <select id="prod_dispo" class="form-control" size="10" ng-options="item.title for item in ctrl.dispoItems" ng-model="ctrl.selectedDispoItems" title="Double-clique pour ajouter" multiple>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <br><br>
+                            <div class="btn-group-vertical btn-block" role="group">
+                                <button class="btn btn-default" ng-click="ctrl.addToIncluded()">
+                                    <span class="glyphicon glyphicon-step-forward"></span>
+                                </button>
+                                <button class="btn btn-default" ng-click="ctrl.addAllToIncluded()">
+                                    <span class="glyphicon glyphicon-fast-forward"></span>
+                                </button>
+                                <button class="btn btn-default" ng-click="ctrl.removeFromIncluded()">
+                                    <span class="glyphicon glyphicon-step-backward"></span>
+                                </button>
+                                <button class="btn btn-default" ng-click="ctrl.removeAllFromIncluded()">
+                                    <span class="glyphicon glyphicon-fast-backward"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="form-group">
+                                <label for="prod_incl" class="form-label">Produites à inclure:</label>
+                                <select id="prod_incl" class="form-control" size="9" ng-options="item.title for item in ctrl.includedItems" ng-model="ctrl.selectedIncludedItems" title="Double-clique pour supprimer" multiple>
+
+                                </select>
+                                <span ng-if="ctrl.includedItems.length > 0">{{ ctrl.includedItems.length }} <ng-pluralize count="ctrl.includedItems.length" when="{ 'one': 'produit inclus', 'other': 'produits inclus' }"></ng-pluralize></span>
+                                <span ng-if="ctrl.includedItems.length <= 0 || ctrl.includedItems == null">Aucun produit inclus</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer class="panel-footer">
+                    <button class="btn btn-primary btn-block" style="text-align: right;">
+                        Etape suivante
+                        <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                    </button>
+                </footer>
+            </div>
+
+        </div>
+
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="src/js/app.js"></script>
+    </body>
+</html>
