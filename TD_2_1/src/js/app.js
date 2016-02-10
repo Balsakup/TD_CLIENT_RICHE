@@ -31,9 +31,10 @@ app.controller('ListesController', [ '$http', function($http) {
         self.dispoItems.forEach(function(item) {
 
             self.includedItems.push(item);
-            self.dispoItems.splice(self.dispoItems.indexOf(item), 1);
 
         });
+
+        self.dispoItems = [];
 
     };
 
@@ -60,9 +61,10 @@ app.controller('ListesController', [ '$http', function($http) {
         self.includedItems.forEach(function(item) {
 
             self.dispoItems.push(item);
-            self.includedItems.splice(self.includedItems.indexOf(item), 1);
 
         });
+
+        self.includedItems = [];
 
     };
 
