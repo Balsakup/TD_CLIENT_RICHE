@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="CurrencyApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Convertisseur</title>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body ng-controller="CurrencyController as ctrl">
+        <div class="container" style="margin-top: 60px;">
+            <div class="panel panel-primary">
+                <header class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">TP 3.1 : Convertisseur de monnaie</div>
+                        <div class="col-xs-6">
+                            <label class="pull-right">
+                                <input type="checkbox" ng-click="ctrl.toggleHistory()">
+                                Historique
+                            </label>
+                        </div>
+                    </div>
+                </header>
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="col-xs-4 col-md-2">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{ ctrl.from.symbol_native }}</span>
+                                <input type="number" class="form-control" ng-model="ctrl.what">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-8 col-md-3">
+                            <select class="form-control" ng-options="(item.code + ' - ' + item.name) for item in ctrl.currencies" ng-model="ctrl.from"></select>
+                        </div>
+
+                        <p class="hidden-md hidden-lg">&nbsp;</p>
+                        
+                        <div class="col-xs-12 col-md-1">
+                            <button class="btn btn-default btn-block" ng-click="ctrl.swap()">
+                                <span class="glyphicon glyphicon-resize-horizontal"></span>
+                            </button>
+                        </div>
+
+                        <p class="hidden-md hidden-lg">&nbsp;</p>
+
+                        <div class="col-xs-8 col-md-3">
+                            <select class="form-control" ng-options="(item.code + ' - ' + item.name) for item in ctrl.currencies" ng-model="ctrl.to"></select>
+                        </div>
+
+                        <div class="col-xs-4 col-md-2">
+                            <button class="btn btn-primary btn-block" ng-click="ctrl.getResult()">Convertir</button>
+                        </div>
+
+                        <p class="hidden-md hidden-lg">&nbsp;</p>
+                        
+                        <div class="col-xs-12 col-md-1">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{ ctrl.to.symbol_native }}</span>
+                                <input type="text" class="form-control" disabled value="{{ ctrl.result | number: ctrl.to.decimal_digits }}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <footer class="panel-footer" ng-if="ctrl.history">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>De</th>
+                                <th>En</th>
+                                <th>Taux</th>
+                                <th>Montant</th>
+                                <th>Résultat</th>
+                                <th>Date</th>
+                                <th>Delta</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="history in ctrl.histories" ng-class="{ 'success': history.delta >= 0, 'danger': history.delta < 0 }">
+                                <td>{{ history.from }}</td>
+                                <td>{{ history.to }}</td>
+                                <td>{{ history.tx }}</td>
+                                <td>{{ history.what }}</td>
+                                <td>{{ history.result }}</td>
+                                <td>{{ history.date }}</td>
+                                <td>{{ history.delta | number: 2 }}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </footer>
+            </div>
+        </div>
+
+        <script src="builds/js/bundle.js"></script>
+    </body>
+</html>

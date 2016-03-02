@@ -1,0 +1,22 @@
+{
+  "name": "td_3_1",
+  "version": "1.0.0",
+  "description": "Permet de convertir de la monnaie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Balsakup <balsakup@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "jquery": "^2.2.1"
+  }
+}
