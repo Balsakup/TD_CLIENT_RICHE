@@ -34,30 +34,32 @@
                         </tbody>
                     </table>
 
-                    <div class="update">
+                    <button class="btn btn-success" ng-click="ctrl.toAdd()">Ajouter...</button>
+
+                    <div class="edit" ng-if="ctrl.edit">
 
                         <div class="page-header">
-                            <h3>Modifier un contact</h3>
+                            <h3>{{ ctrl.operation }} un contact</h3>
                         </div>
 
                         <div class="row">
 
                             <div class="col-xs-3">
 
-                                <input type="text" class="form-control" placeholder="Nom">
+                                <input type="text" ng-model="ctrl.contactTmp.nom" class="form-control" placeholder="Nom">
 
                             </div>
 
                             <div class="col-xs-3">
 
-                                <input type="text" class="form-control" placeholder="Prénom">
+                                <input type="text" ng-model="ctrl.contactTmp.prenom" class="form-control" placeholder="Prénom">
 
 
                             </div>
 
                             <div class="col-xs-3">
 
-                                <input type="text" class="form-control" placeholder="Mail">
+                                <input type="text" ng-model="ctrl.contactTmp.mail" class="form-control" placeholder="Mail">
 
 
                             </div>
@@ -68,14 +70,14 @@
 
                                     <div class="col-xs-12 col-md-6">
 
-                                        <button class="btn btn-info btn-block">Valider</button>
+                                        <button class="btn btn-info btn-block" ng-click="ctrl.operation == 'Ajouter' ? ctrl.add() : ctrl.update();">Valider</button>
 
                                     </div>
 
                                     <div class="col-xs-12 col-md-6">
 
                                         <p class="hidden-md hidden-lg"></p>
-                                        <button class="btn btn-danger btn-block">Annuler</button>
+                                        <button class="btn btn-danger btn-block" ng-click="ctrl.edit = false; ctrl.contact = {}">Annuler</button>
 
                                     </div>
 
